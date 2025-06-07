@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ارتباط با ما</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      direction: rtl;
+      max-width: 400px;
+      margin: 30px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+      background: #f9f9f9;
+    }
+    h2 {
+      color: #333;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    ul li {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+    a {
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    #qrcode {
+      margin: 25px auto;
+      width: 160px;
+      height: 160px;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h2>ارتباط با ما</h2>
+
+  <ul>
+    <li>📞 تماس: <a href="tel:09019101660">09019101660</a></li>
+    <li><a href="https://wa.me/989100312011" target="_blank" onclick="generateQR('https://wa.me/989100312011')">واتساپ</a></li>
+    <li><a href="https://t.me/worldjapan" target="_blank" onclick="generateQR('https://t.me/worldjapan')">تلگرام</a></li>
+    <li><a href="https://instagram.com/_worldjapan" target="_blank" onclick="generateQR('https://instagram.com/_worldjapan')">اینستاگرام</a></li>
+    <li><a href="https://www.worldjapanshop.com" target="_blank" onclick="generateQR('https://www.worldjapanshop.com')">سایت ما</a></li>
+  </ul>
+
+  <div id="qrcode"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    var qrCodeInstance;
+
+    function generateQR(link) {
+      if (qrCodeInstance) {
+        qrCodeInstance.clear();
+        qrCodeInstance.makeCode(link);
+      } else {
+        qrCodeInstance = new QRCode(document.getElementById("qrcode"), {
+          text: link,
+          width: 160,
+          height: 160,
+        });
+      }
+    }
+
+    // بار اول QR واتساپ رو نمایش بده
+    generateQR('https://wa.me/989100312011');
+  </script>
+</body>
+</html>
